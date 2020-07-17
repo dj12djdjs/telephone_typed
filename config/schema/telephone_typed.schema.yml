@@ -1,0 +1,11 @@
+# Default value.
+field.value.telephone_typed:
+  type: mapping
+  label: Default value
+  mapping:
+    phone_number:
+      type: telephone
+      label: Phone Number
+    type:
+      type: string
+      label: Type

@@ -1,0 +1,6 @@
+
+
+telephone_typed:
+  css:
+    component:
+      css/telephone-typed-widget.css: {}
