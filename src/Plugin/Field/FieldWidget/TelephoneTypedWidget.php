@@ -24,10 +24,10 @@ class TelephoneTypedWidget extends WidgetBase {
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
 
-    $element['phone_number'] = [
+    $element['value'] = [
       '#type' => 'tel',
-      '#title' => $this->t('Phone Number'),
-      '#default_value' => isset($items[$delta]->phone_number) ? $items[$delta]->phone_number : NULL,
+      '#title' => $this->t('Number'),
+      '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
       '#size' => 20,
     ];
 
@@ -58,8 +58,8 @@ class TelephoneTypedWidget extends WidgetBase {
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
     foreach ($values as $delta => $value) {
-      if ($value['phone_number'] === '') {
-        $values[$delta]['phone_number'] = NULL;
+      if ($value['value'] === '') {
+        $values[$delta]['value'] = NULL;
       }
       if ($value['type'] === '') {
         $values[$delta]['type'] = NULL;

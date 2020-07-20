@@ -3,9 +3,9 @@ field.value.telephone_typed:
   type: mapping
   label: Default value
   mapping:
-    phone_number:
+    value:
       type: telephone
-      label: Phone Number
+      label: Number
     type:
       type: string
       label: Type

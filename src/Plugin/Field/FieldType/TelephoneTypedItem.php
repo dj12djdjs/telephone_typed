@@ -25,7 +25,7 @@ class TelephoneTypedItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public function isEmpty() {
-    if ($this->phone_number !== NULL) {
+    if ($this->value !== NULL) {
       return FALSE;
     }
     elseif ($this->type !== NULL) {
@@ -39,8 +39,8 @@ class TelephoneTypedItem extends FieldItemBase {
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
 
-    $properties['phone_number'] = DataDefinition::create('string')
-      ->setLabel(t('Phone Number'));
+    $properties['value'] = DataDefinition::create('string')
+      ->setLabel(t('Number'));
     $properties['type'] = DataDefinition::create('string')
       ->setLabel(t('Type'));
 
@@ -53,7 +53,7 @@ class TelephoneTypedItem extends FieldItemBase {
   public function getConstraints() {
     $constraints = parent::getConstraints();
 
-    $options['phone_number']['NotBlank'] = [];
+    $options['value']['NotBlank'] = [];
 
     $options['type']['AllowedValues'] = array_keys(TelephoneTypedItem::allowedTypeValues());
 
@@ -71,7 +71,7 @@ class TelephoneTypedItem extends FieldItemBase {
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
 
     $columns = [
-      'phone_number' => [
+      'value' => [
         'type' => 'varchar',
         'length' => 255,
       ],
@@ -96,7 +96,7 @@ class TelephoneTypedItem extends FieldItemBase {
 
     $random = new Random();
 
-    $values['phone_number'] = mt_rand(pow(10, 8), pow(10, 9) - 1);
+    $values['value'] = mt_rand(pow(10, 8), pow(10, 9) - 1);
 
     $values['type'] = array_rand(self::allowedTypeValues());
 
@@ -111,9 +111,9 @@ class TelephoneTypedItem extends FieldItemBase {
    */
   public static function allowedTypeValues() {
     return [
-      'alpha' => t('Alpha'),
-      'beta' => t('Beta'),
-      'gamma' => t('Gamma'),
+      'land_line' => t('Land Line'),
+      'mobile' => t('Mobile'),
+      'fax' => t('Fax'),
     ];
   }
 
